@@ -1,0 +1,46 @@
+package com.system;
+
+import java.util.ArrayList;
+
+public class SaveTheReactions {
+	
+	
+	
+	ArrayList<Employee> employees = new ArrayList<>();
+
+    // Add employee data to the ArrayList
+    employees.add(new Employee("John Doe", "1980-01-01", "john@example.com", 1, 5000));
+    employees.add(new Employee("Jane Smith", "1985-05-10", "jane@example.com", 2, 6000));
+    // Add more employees as needed
+
+    // Insert data from ArrayList into the database
+    for (Employee employee : employees) {
+        try {
+            // Create a PreparedStatement for the insert statement
+            PreparedStatement statement = connection.prepareStatement(
+                    "INSERT INTO employees (name, dob, email, manager_id, salary) " +
+                            "VALUES (?, ?, ?, ?, ?)"
+            );
+
+            // Set the parameter values
+            statement.setString(1, employee.getName());
+            statement.setString(2, employee.getDob());
+            statement.setString(3, employee.getEmail());
+            statement.setInt(4, employee.getManagerId());
+            statement.setDouble(5, employee.getSalary());
+
+            // Execute the insert statement
+            statement.executeUpdate();
+
+            // Close the statement
+            statement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Close the database connection
+    // connection.close();
+}
+
+}

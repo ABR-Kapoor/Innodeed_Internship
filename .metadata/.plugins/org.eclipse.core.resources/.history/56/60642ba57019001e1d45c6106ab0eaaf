@@ -1,0 +1,20 @@
+package com.EmployeesData;
+
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class ManageMyFile {
+
+		public void loginData(String name,String pass) {
+			
+			try {
+				FileWriter fWriter= new FileWriter("LoginDetails.txt");
+				fWriter.write("Username: "+name);
+			} catch (IOException e) {
+				
+				System.out.println("You cant login!! because: "+e);
+			}
+			
+		}
+		
+}

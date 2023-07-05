@@ -1,0 +1,36 @@
+package com.EmployeesData;
+
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class ManageMyFile {
+
+		public boolean loginData(String name,String pass) {
+			boolean hogaya = false;
+			
+			try (FileWriter fWriter = new FileWriter("D:\\InternshipJavaAdvanceJDBC\\UseFileMngtInEmployee\\src\\com\\employeesDataLoginDetails.txt")) {
+				fWriter.write("Username: "+name);
+				fWriter.write("Password: "+pass+"\n\n__________________");
+			} catch (IOException e) {
+				System.out.println("You cant login!! because: "+e);
+			}
+			
+		}
+		
+		public boolean writeFile(String fName, String txt) {
+			
+
+			try {
+				FileWriter myFileWriter = new FileWriter("D:/InternshipJavaAdvanceJDBC/FileHandling/src/com/employee/" + fName + ".txt");
+				myFileWriter.write(txt);
+				hogaya = true;
+				myFileWriter.close();
+
+			} catch (IOException e) {
+				System.out.println("Some problem occurred while writing to the file!!");
+			}
+
+			return hogaya;
+		}
+		
+}

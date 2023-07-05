@@ -1,0 +1,19 @@
+package com.EmployeesData;
+
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class ManageMyFile {
+
+		public void loginData(String name,String pass) {
+			
+			try {
+				FileWriter fWriter= new FileWriter("LoginDetails.txt");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+		
+}

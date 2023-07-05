@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move element &apos;practice.java&apos; to &apos;java_collectionFrameWork/src/bla&apos;&#x0D;&#x0A;- Original project: &apos;stream_lambda_interfaces&apos;&#x0D;&#x0A;- Destination element: &apos;java_collectionFrameWork/src/bla&apos;&#x0D;&#x0A;- Original element: &apos;stream_lambda_interfaces.practice.java&apos;&#x0D;&#x0A;- Update references to refactored element" description="Move compilation unit" destination="=java_collectionFrameWork/src&lt;bla" element1="/src&lt;stream_lambda_interfaces{practice.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" patterns="*" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1687940901553" units="1" version="1.0"/>
+</session>

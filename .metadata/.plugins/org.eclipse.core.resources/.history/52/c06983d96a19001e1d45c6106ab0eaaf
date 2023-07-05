@@ -1,0 +1,36 @@
+package com.employee;
+
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+
+		Scanner sc = new Scanner(System.in);
+
+		ManageFile milf = new ManageFile();
+		System.out.print("Enter the name of the file you want to create: ");
+		String fName = sc.nextLine();
+
+		boolean bangaya = milf.createFile(fName);
+		if (bangaya) {
+			System.out.println("\n\tFile created successfully!!\n");
+		} else {
+			System.out.println("Couldn't create the file.");
+		}
+
+		System.out.println("Write what you want to write: ");
+		String txt = sc.nextLine();
+
+		boolean likhdiya = milf.writeFile(fName, txt);
+		if (likhdiya) {
+			System.out.println("\n\tContent written to the file successfully!!\n");
+		} else {
+			System.out.println("Couldn't write to the file.");
+		}
+			
+		System.out.print("Wanna delete the same file: ");
+		
+	}
+
+}

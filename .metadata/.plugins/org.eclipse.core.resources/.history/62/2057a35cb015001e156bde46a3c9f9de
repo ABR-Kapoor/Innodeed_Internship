@@ -1,0 +1,16 @@
+
+public class Set {
+
+	public static void main(String[] k) {
+		
+		// con't contain duplicate values
+		// allow null values (waise likedlist bhi krta hai)
+		// unordered collection
+		// internally uses hashSet to store
+		// not thread safe, if multiple threads try to modify a hashset at the same time, the finl outcome is not-deterministic, you must explicity sync concurrent access to the hashset in a multiple threaded environment
+		
+		 
+
+	}
+
+}

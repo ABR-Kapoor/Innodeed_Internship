@@ -1,0 +1,153 @@
+package com.system;
+
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+public class SaveTheReactions {
+	
+	public static boolean showAll() {			
+		boolean b=false;
+		
+		 List<Employee> employees = new ArrayList<>();
+
+	        try {
+	        	
+	        	Connection cp= DbCon.CreateC();
+	    		String sql= "select * from emp";
+	    		
+	    		Statement stt= cp.createStatement();
+	    		
+	    		ResultSet rs=stt.executeQuery(sql);
+
+	            while (rs.next()) {
+	                Employee employee = new Employee();
+	                employee.setEmpName(rs.getString("name"));
+	                employee.setDob(rs.getDate("dob"));
+	                employee.setEmail(rs.getString("email"));
+	                employee.setManagerId(rs.getInt("manager_id"));
+	                employee.setSalary(rs.getDouble("salary"));
+	                employees.add(employee);
+	            			
+			
+		   			   
+//		   System.out.println("\n __________________________\n\nId: "+id+"\nName: "+name+"\nEmail: "+eMail+"\nDate of birth: "+dob+"\nManager Name: "+mngerId+"\nSalary: "+salary+"\n");
+		   }
+	        }
+		catch (Exception e) {
+			// TODO: handle exception
+		}
+		return b;
+	}
+	
+	public static boolean showEmpByItsId(int emp_id) {
+    boolean b=false;
+		
+		try {
+			
+		
+		Connection con= DbCon.CreateC();
+		String sql= "select * from emp where empId="+emp_id;
+		
+		Statement stt= con.createStatement();
+		
+		
+		ResultSet set= stt.executeQuery(sql);
+		
+		if (set.next()) {
+			int eId=set.getInt(1);
+			String eName=set.getString(2);
+			Date edob=set.getDate(3);
+			int mId=set.getInt(4);
+			String eMail=set.getNString("email");
+			int salary= set.getInt(5);
+			
+			System.out.println("\n\nName : "+eName);
+			System.out.println("ID : "+ eId);
+			System.out.println("Date of Birth :"+edob);
+			System.out.println("Email ID : "+eMail);
+			System.out.println("His Manger's ID : "+mId);
+			System.out.println("Salary : "+salary+"\n");
+			b=true;
+		}
+		
+		
+		} catch (Exception e) {
+				System.out.println("\n\n\t\tna ho payega bhai... khud kar le delete kyoki:"+e+"\n\n\t\t");
+		}
+		
+		return b;
+	}
+
+	public static boolean showEmpByMngerId(int emp_id) {
+		boolean b=false;
+		
+		try {
+			
+		
+		Connection con= DbCon.CreateC();
+		String sql= "select * from emp where managerId="+emp_id;
+		
+		Statement stt= con.createStatement();
+		
+		
+		ResultSet set= stt.executeQuery(sql);
+		
+		if (set.next()) {
+			int eId=set.getInt(1);
+			String eName=set.getString(2);
+			String edob=set.getString(3);
+			int mId=set.getInt(4);
+			String eMail=set.getNString("email");
+			int sala= set.getInt(5);
+			
+			System.out.println("\n\nName : "+eName);
+			System.out.println("ID : "+ eId);
+			System.out.println("Date of Birth :"+edob);
+			System.out.println("Email ID : "+eMail);
+			System.out.println("His Manger's ID : "+mId);
+			System.out.println("Salary: "+sala+"\n");
+			b=true;
+		}
+		
+		
+		} catch (Exception e) {
+				System.out.println("\n\n\t\tna ho payega bhai... khud kar le delete kyoki:"+e+"\n\n\t\t");
+		}
+		
+		return b;
+	}
+
+	public static boolean updateValueStr(int emp_id, String what, String val) {
+		boolean b=false;
+		try {
+	    	Connection con= DbCon.CreateC();
+			Statement stt = con.createStatement();
+	        String sql = "UPDATE emp SET "+what+" = '" + val + "' WHERE empId = " + emp_id;
+	        stt.executeUpdate(sql);
+	        b=true;
+	    	} catch (Exception e) {
+				System.out.println("\n\n\tProblem occur to update employee's detail whic is: "+e);
+			}
+		return b;
+	}
+
+	public static boolean updateValueInt(int emp_id, String what, int val) {
+		boolean b=false;
+		try {
+	    	Connection con= DbCon.CreateC();
+			Statement stt = con.createStatement();
+	        String sql = "UPDATE emp SET "+what+" = " + val + " WHERE empId = " + emp_id;
+	        stt.executeUpdate(sql);
+	        b=true;
+	    	} catch (Exception e) {
+				System.out.println("\n\n\tProblem occur to update employee's detail whic is: "+e);
+			}
+		return b;
+	}
+
+
+}

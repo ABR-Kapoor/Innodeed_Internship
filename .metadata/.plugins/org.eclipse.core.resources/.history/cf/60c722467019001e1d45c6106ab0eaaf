@@ -1,0 +1,9 @@
+package com.EmployeesData;
+
+public class ManageMyFile {
+
+		public void loginData(String name,String pass,ManageMyFile) {
+			
+		}
+		
+}

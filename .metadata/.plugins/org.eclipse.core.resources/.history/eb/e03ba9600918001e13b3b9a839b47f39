@@ -1,0 +1,43 @@
+package com.system;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+
+public class SaveTheReactions {
+	
+	public static boolean AddEmp(Employee e) {
+		boolean b=false;
+		try {
+		//create a connection for operations
+		Connection con= DbCon.CreateC();     
+		String sql = "INSERT INTO Emp (empName, dob, managerId, email, salary) VALUES (?, STR_TO_DATE(?, '%d/%m/%Y'), ?, ?, ?)";
+
+		
+		//for dynamic query
+		PreparedStatement pstt = con.prepareStatement(sql);
+		
+		//inserting values
+		pstt.setString(1, e.getEmpName());
+		pstt.setString(2, e.getDob()); 
+		pstt.setInt(3, e.getManagerId());
+		pstt.setString(4, e.getEmail());
+		pstt.setFloat(5, e.getSalary());
+		
+		//execute the code
+		
+		int done =pstt.executeUpdate();	
+		if(done==1) {
+			b=true;
+			return b;
+		}
+		
+		
+		} catch (Exception e2) {
+			System.out.println(e2);	
+			System.out.println("Bro! there is some problem I couldn't insert Your given data");
+		}
+		
+		return b;
+	}
+
+}
