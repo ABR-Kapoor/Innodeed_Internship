@@ -30,7 +30,7 @@ public class SaveEmpDetails {
 		boolean hogaya = false;
 
 		try {
-			FileWriter myFileWriter = new FileWriter("D:\\InternshipJavaAdvanceJDBC\\UseFileMngtInEmployee\\src\\com\\employeesData\\EmployeeData.txt",true);
+			FileWriter myFileWriter = new FileWriter("D:\\InternshipJavaAdvanceJDBC\\EmployeesInFile\\src\\com\\EmployeesData\\EmployeeData.txt",true);
 			
 			String employeeData = emp.getEmpName() + "," + emp.getDob() + "," + emp.getManagerId() + "," + emp.getEmail() + "," + emp.getSalary();
             myFileWriter.write(employeeData);
@@ -50,7 +50,7 @@ public class SaveEmpDetails {
         boolean success = false;
 
         try {
-            BufferedReader fileread = new BufferedReader(new FileReader("D:\\InternshipJavaAdvanceJDBC\\UseFileMngtInEmployee\\src\\com\\employeesData\\EmployeeData.txt"));
+            BufferedReader fileread = new BufferedReader(new FileReader("D:\\InternshipJavaAdvanceJDBC\\EmployeesInFile\\src\\com\\EmployeesData\\EmployeeData.txt"));
             String line;
             StringBuilder saveRestLines = new StringBuilder();
 
@@ -64,7 +64,7 @@ public class SaveEmpDetails {
             
             fileread.close();
 
-            FileWriter writer = new FileWriter("D:\\InternshipJavaAdvanceJDBC\\UseFileMngtInEmployee\\src\\com\\employeesData\\EmployeeData.txt");
+            FileWriter writer = new FileWriter("D:\\InternshipJavaAdvanceJDBC\\EmployeesInFile\\src\\com\\EmployeesData\\EmployeeData.txt");
             writer.write(saveRestLines.toString());
             writer.close();
             
@@ -81,30 +81,29 @@ public class SaveEmpDetails {
 	    boolean success = false;
 
 	    try {
-	        BufferedReader reader = new BufferedReader(new FileReader("D:\\InternshipJavaAdvanceJDBC\\UseFileMngtInEmployee\\src\\com\\employeesData\\EmployeeData.txt"));
+	        BufferedReader reader = new BufferedReader(new FileReader("D:\\InternshipJavaAdvanceJDBC\\EmployeesInFile\\src\\com\\EmployeesData\\EmployeeData.txt"));
 	        String line;
 	        StringBuilder fileContent = new StringBuilder();
 	        String name;
-	        
+
 	        while ((line = reader.readLine()) != null) {
 	            String[] employeeData = line.split(",");
 	            name = employeeData[0].trim();
 
 	            if (name.equalsIgnoreCase(empName)) {
 	                StringBuilder updatedLine = new StringBuilder();
-	                
+
 	                if ((getColumnIndex(columnName)==0)) {
                 		updatedLine.append(updatedValue);
 
                 		for (int j = 1; j < employeeData.length; j++) {
                 		updatedLine.append(",").append(employeeData[j]);
                 		}
-                		
+
                 		 line = updatedLine.toString(); 
                 		 fileContent.append(line).append(System.lineSeparator());
                 		break;
-
-					}
+	                }
 
 	                for (int i = 1; i < employeeData.length; i++) {
 	                
@@ -124,7 +123,7 @@ public class SaveEmpDetails {
 
 	        reader.close();
 
-	        FileWriter writer = new FileWriter("D:\\InternshipJavaAdvanceJDBC\\UseFileMngtInEmployee\\src\\com\\employeesData\\EmployeeData.txt");
+	        FileWriter writer = new FileWriter("D:\\InternshipJavaAdvanceJDBC\\EmployeesInFile\\src\\com\\EmployeesData\\EmployeeData.txt");
 	        writer.write(fileContent.toString());
 	        writer.close();
 
@@ -148,7 +147,64 @@ public class SaveEmpDetails {
 	}
 
 
+	public static void readEmpfile() {
+		
+		try(BufferedReader reader = new BufferedReader(new FileReader("D:\\InternshipJavaAdvanceJDBC\\EmployeesInFile\\src\\com\\EmployeesData\\EmployeeData.txt"));) {
+			String line;
+	        
+	        String values[] =new String[5];
+
+	        while ((line = reader.readLine()) != null) {
+	            String[] employeeData = line.split(",");
+	            values[0] = employeeData[0].trim();
+	            values[1]= employeeData[1].trim();
+	            values[2]= employeeData[2].trim();
+	            values[3]= employeeData[3].trim();
+	            values[4]= employeeData[4].trim();
+	            
+	            if (values[0].equals("name")) {
+					continue;
+				}
+	            System.out.println("\nName: "+values[0]+"\nDate of birth: "+values[1]+"\nManager Id: "+values[2]+"\nEmail: "+values[3]+"\nSalary: "+values[4]);
+	        }
+	        } catch (IOException e) {
+		        System.out.println("Some problem occurred while updating the employee data in the file!!");
+		    }
+		
+	}
+
+	public static void showByEmpid(String rm) {
+		
+		try(BufferedReader reader = new BufferedReader(new FileReader("D:\\InternshipJavaAdvanceJDBC\\EmployeesInFile\\src\\com\\EmployeesData\\EmployeeData.txt"));) {
+			String line;
+	        
+	        String values[] =new String[5];
+
+	        while ((line = reader.readLine()) != null) {
+	        	
+	        		String[] employeeData = line.split(",");
+		            values[0] = employeeData[0].trim();
+		            
+		            if (values[0].equalsIgnoreCase(rm)) {
+		            values[1]= employeeData[1].trim();
+		            values[2]= employeeData[2].trim();
+		            values[3]= employeeData[3].trim();
+		            values[4]= employeeData[4].trim();
+		            
+		            if (values[0].equals("name")) {
+						continue;
+					}
+		            System.out.println("\nName: "+values[0]+"\nDate of birth: "+values[1]+"\nManager Id: "+values[2]+"\nEmail: "+values[3]+"\nSalary: "+values[4]);
+		        }
+				}
+	            
+	        } catch (IOException e) {
+		        System.out.println("Some problem occurred while updating the employee data in the file!!");
+		    }
+		
+	}
 	
 	
+
 	
 }

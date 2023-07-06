@@ -25,7 +25,7 @@ public class Launch {
 			}
 			
 			while (true) {
-				System.out.print("\nPRESS 1 to ADD an employee\nPRESS 2 to Remove an Employee\nPRESS 3 to UPDATE employee's detail\n: ");
+				System.out.print("\nPRESS 1 to ADD an employee\nPRESS 2 to REMOVE an Employee\nPRESS 3 to UPDATE employee's detail\nPRESS 4 to DISPLAY Employees detail\nPRESS 5 to DISPLAY by Employee's Name\n: ");
 				int c = Integer.parseInt(sc.readLine());
 				
 				if (c == 1) {
@@ -82,6 +82,15 @@ public class Launch {
 					else {
 						System.out.println("Could not update employee.");
 					}		
+				}
+				
+				if (c==4) {		SaveEmpDetails.readEmpfile();	}
+				
+				if (c==5) { 
+					System.out.print("Enter Employee's Name to see its details: "); String rm= sc.readLine();
+					
+					SaveEmpDetails.showByEmpid(rm);
+					
 				}
 				}
 		} catch (Exception e) {

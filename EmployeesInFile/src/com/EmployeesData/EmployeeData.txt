@@ -1,0 +1,5 @@
+name,dob,managerid,email,salary
+anaa,12/02/1990,12,abcd@gmail.com,4500.0
+ramu,18/05/1998,144,asdf@adf.vom,45000.0
+shayam,30/06/1996,78,array@gmail.com,78012.0
+radhe,12/09/2003,3,radhe@krishna.love,0.0
